@@ -29,4 +29,8 @@ public class Problem1 {
         }
         return null;
     }
+
+    public Integer[] findAllStringsInStringArray(String s){
+        return null;
+    }
 }

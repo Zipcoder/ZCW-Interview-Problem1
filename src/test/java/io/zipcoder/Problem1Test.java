@@ -26,7 +26,15 @@ public class Problem1Test {
         Assert.assertTrue(expected==actual);
     }
 
-    
+    @@Test
+    public void findAllPositionsOfAStringInAnArray(){
+
+        String find = "F";
+        Integer[] expected ={4,56};
+        Integer[] actual = problem1.findAllStringsInStringArray(find);
+
+        Assert.assertArrayEquals(expected,actual);
+    }
 
 
 
