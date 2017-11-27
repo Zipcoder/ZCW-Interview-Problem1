@@ -2,6 +2,9 @@ package io.zipcoder;
 
 public class Iteration {
 
+//Do it using a map like in the directions
+
+
     public String replaceUsingIteration(String rawData,String map, char replaceWith){
         StringBuilder buildString = new StringBuilder(rawData);
         String toReturn = rawData;
