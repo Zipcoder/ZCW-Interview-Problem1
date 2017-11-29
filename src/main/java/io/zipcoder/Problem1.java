@@ -6,21 +6,27 @@ import java.util.Map;
 public class Problem1 {
 
     //need a map
-    HashMap <Character, Character> characterMap = new HashMap<Character, Character>();
+    private HashMap <Character, Character> characterMap = new HashMap<Character, Character>();
 
-    public String replaceCharacters(String stringToReplace){
-        characterMap.put('f','7');
+    public Problem1() {
+        characterMap.put('f', '7');
         characterMap.put('s', '$');
         characterMap.put('1', '!');
         characterMap.put('a', '@');
+    }
 
-        char[] charArray = stringToReplace.toCharArray();
+    public String replaceCharacters(String stringToReplace){
+
+        char[] charArray = stringToReplace.toLowerCase().toCharArray();
 
         for (int i = 0; i < charArray.length; i++){
-            if (charArray[i] == characterMap.)
+            char charToReplace = charArray[i];
+            if (characterMap.containsKey(charToReplace)){
+                charArray[i] = characterMap.get(charToReplace);
+            }
         }
 
-        return "";
-    }
+        return new String(charArray);
+    }//replaces letters but gotta fix capitalization
 
 }
