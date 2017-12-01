@@ -1,52 +1,34 @@
 package io.zipcoder;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Set;
 
 public class Problem1 {
 
-    private HashMap<Character, Character> cypher = new HashMap<Character, Character>(){{
-        put('f', '7');
-        put('s', '$');
-        put('1', '!');
-        put('a', '@');
-    }};
-
-    //step1 read character
-    //step2 decide if needs replacing
-    //step3 replace
-
-    Character getCharAt(String raw, int index){
-        return raw.charAt(index);
-    }
-
-    Boolean decideIfReplace(Character character){//assume .toLowerCase() has already been called on input String
-        Boolean output = false;
-        ArrayList<Character> wanted = new ArrayList<>(cypher.keySet());
-        for (Character wantChar :
-                wanted) {
-            if(character.equals(wantChar)) {
-                output = true;
-            }
+    String encodeIterate (String raw, HashMap<Character, Character> cypher){
+        Set<Character> keyChars = cypher.keySet();
+        for (Character keyChar :
+                keyChars) {
+            raw = raw.replace(keyChar, cypher.get(keyChar));
         }
-        return output;
+        return raw;
     }
 
-    String replaceChar(String raw, Character character, int index){
-        Character replacement = cypher.get(character);
-        return raw.replace(character, replacement);
+    public String encodeRecursive (String raw, HashMap<Character, Character> cypher){
+        return encodeRecursive(raw, cypher, 0);
+
     }
 
-    public String encodeIterate(String raw){
-        String flattened = raw.toLowerCase();
-        String output = raw;
-        for (int i = 0; i < raw.length(); i++) {
-            Character character = getCharAt(flattened, i);
-            if (decideIfReplace(character)){
-                output = replaceChar(output, character, i);
-            }
+    private String encodeRecursive (String raw, HashMap<Character, Character> cypher, int index){
+        Character keyChar = raw.charAt(index);
+        if(cypher.containsKey(keyChar)) {
+            raw = raw.replace(keyChar, cypher.get(keyChar));
         }
-        return output;
+        if(index == raw.length()-1) {
+            return raw;
+        } else {
+            index++;
+            return encodeRecursive(raw, cypher, index);
+        }
     }
 }
