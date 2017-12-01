@@ -1,45 +1,34 @@
 package io.zipcoder;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class Problem1 {
-    private HashMap<Character,Character> changeMap = new HashMap<Character, Character>();
-    private String sentence;
 
-    public Problem1(String sentence, HashMap<Character,Character> changeMap){
-        this.sentence = sentence;
-        this.changeMap = changeMap;
-    }
-
-    public String changeWithLoop(){
-        StringBuilder newSentence = new StringBuilder();
-        for(int i = 0;i<sentence.length();i++){
-            Character currentCharacter = sentence.charAt(i);
-            if(changeMap.containsKey(Character.toLowerCase(currentCharacter)) ||
-                    changeMap.containsKey(Character.toUpperCase(currentCharacter))){
-                newSentence.append(changeMap.get(Character.toLowerCase(currentCharacter)));
-            }else{
-                newSentence.append(currentCharacter);
+    public String changeLetters(String str,HashMap<Character,Character> changeMap){
+        StringBuilder builder = new StringBuilder();
+        for(int i = 0;i<str.length();i++){
+            Character currentChar = str.charAt(i);
+            if(changeMap.containsKey(Character.toLowerCase(currentChar))){
+                currentChar = changeMap.get(Character.toLowerCase(currentChar));
             }
+            builder.append(currentChar);
         }
-        return newSentence.toString();
+        return builder.toString();
     }
 
-    public String withRecursion(){
-        return replace(sentence,0);
+    public String recursion(String str,HashMap<Character,Character> changeMap){
+        if(str.length() == 0){
+            return "";
+        }
+        Character currentChar = str.charAt(0);
+        if(changeMap.containsKey(Character.toLowerCase(currentChar))){
+            currentChar = changeMap.get(Character.toLowerCase(currentChar));
+        }
+        return currentChar + recursion(str.substring(1),changeMap);
+
     }
 
-    public String replace(String sentence, int place){
-        Character currentCharacter = sentence.charAt(place);
-        if(changeMap.containsKey(Character.toLowerCase(currentCharacter)) || changeMap.containsKey(Character.toUpperCase(currentCharacter))){
-            currentCharacter = changeMap.get(Character.toLowerCase(currentCharacter));
-        }
-        sentence = sentence.substring(0,place)+currentCharacter+sentence.substring(place+1);
 
-        if(place<sentence.length()-1) {
-            sentence = replace(sentence,place+=1);
-        }
-        return sentence;
-    }
+
+    // use replace
 }
