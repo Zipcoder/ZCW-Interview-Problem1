@@ -1,9 +1,6 @@
 package io.zipcoder;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 
 // Given the following map { ‘f’ : ‘7’, ‘s’:’$’, ‘1’:’!’, ‘a’.:’@’},
@@ -15,37 +12,20 @@ public class Problem1 {
 
 
 
-    public static String replaceCharsInString(String input) {
-        HashMap<Character,Character> map = populateMap();
-        ArrayList<Character> charArrary = getArray(input);
+    public static String replaceCharsInString(String input,Map<Character,Character> map) {
+        StringBuilder builder = new StringBuilder();
 
-        for (char c: charArrary) {
-            if(charArrary.contains(map.get('f')));
+        for(int i = 0; i < input.length(); i++ ) {
+            Character currentChar = input.charAt(i);
 
+            if (map.containsKey(currentChar)) {
+                currentChar = map.get(currentChar);
+                //get returns the value of the key
+            }
+            builder.append(currentChar);
         }
-
-
-
-//        input.replace('f','7');
-//        input.replace('s','$'); //ignored
-        return input;
+        return builder.toString();
     }
 
-    public static HashMap populateMap(){
-        HashMap<Character,Character> map = new HashMap<Character, Character>();
 
-        map.put('f','7');
-        map.put('s','$');
-        map.put('1','!');
-        map.put('a','@');
-        return map;
-    }
-
-    public static ArrayList<Character> getArray(String input){
-        ArrayList<Character> charArrary = new ArrayList <Character>();
-        for (char c: input.toCharArray()) {
-            charArrary.add(c);
-        }
-        return charArrary;
-    }
 }
