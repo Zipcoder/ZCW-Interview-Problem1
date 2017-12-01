@@ -1,12 +1,19 @@
 package io.zipcoder;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class Problem1Test {
 
-    Problem1 problem1 = new Problem1();
-    String stringToTest = "The Farmer went to the store to get 1 dollar’s worth of fertilizer";
+    private Problem1 problem1;
+    private String stringToTest;
+
+    @Before
+    public void setUp(){
+        problem1 = new Problem1();
+        stringToTest = "The Farmer went to the store to get 1 dollar's worth of fertilizer";
+    }
 
     @Test
     public void replaceCharactersTest(){
