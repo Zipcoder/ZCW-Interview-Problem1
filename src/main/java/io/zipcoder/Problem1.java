@@ -4,21 +4,38 @@ import javax.swing.text.html.HTMLDocument;
 import java.util.*;
 
 public class Problem1 {
+    public String toreplaceChar(String input) {
 
-    public void replaceKey(Map<Character, Long> stringMap) {
+        String input2 = input.toLowerCase();
+
+        HashMap<Character, Character> toReplace = new HashMap<Character, Character>();
+        toReplace.put('f' , '7');
+        toReplace.put('s' , '$');
+        toReplace.put('1' , '!');
+        toReplace.put('a' , '@');
+
+        char[] inputArray = input.toCharArray();
 
 
-        stringMap = new HashMap<Character , Long>();
-        Set<Character> keyValue = stringMap.keySet();
-        Map<Character, Long> replaced = new HashMap<Character, Long>();
+        for (int i = 0; i < inputArray.length; i++) {
 
-            boolean iterator = stringMap.containsKey(keyValue);
-            while (iterator) {
-
-                replaced.put(keyValue,  stringMap.values())
-            }
+            if (toReplace.containsKey(input.toLowerCase().charAt(i)))
+                inputArray[i] = toReplace.get(input2.charAt(i));
         }
+
+        return new String(inputArray);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
