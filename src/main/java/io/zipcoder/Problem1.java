@@ -9,21 +9,18 @@ public class Problem1 {
 
     }
 
-    public static String replaceThroughIteration(String input) {
-        Map<Character, Character> map = new HashMap<Character, Character>();
-        map.put('f','7');
-        map.put('s', '$');
-        map.put('1', '!');
-        map.put('a', '@');
+    public static String replaceThroughIteration(String string, Map<Character, Character> swapCharacter) {
 
-        for(Map.Entry<Character, Character> entry : map.entrySet()) {
-            //if a key in the map, matches a character in a string, replace with maps value for respective key
-            //have the new string returned
-        }
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < string.length(); i++) {
+            Character current = string.charAt(i);
+            if (swapCharacter.containsKey(Character.toLowerCase(current))) {
+                current = swapCharacter.get(Character.toLowerCase(current));
+            }
+            stringBuilder.append(current);
+            }
+
+        return stringBuilder.toString();
     }
-
-    public String replaceThroughRecursion() {
-
-    }
-
 }
+
