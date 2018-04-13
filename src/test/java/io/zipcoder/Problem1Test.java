@@ -33,9 +33,10 @@ public class Problem1Test {
         map.put("a", "@");
 
         String input = "the farmer went to the store to get 1 dollar’s worth of fertilizer";
-        String expected = "f";
+        String expected = "the 7@rmer went to the $tore to get ! doll@r’$ worth o7 7ertilizer";
 
-        String actual = Problem1.replaceWithIteration(map, input);
+
+        String actual = Problem1.replaceWithRecursion(map, input);
 
         Assert.assertEquals(expected, actual);
     }
