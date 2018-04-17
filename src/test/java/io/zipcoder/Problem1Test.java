@@ -27,11 +27,22 @@ public class Problem1Test {
     }
 
     @Test
-    public void replaceCharsTest() {
+    public void replaceCharsWithIterationTest() {
         // Given
         String expectedOutput = output;
         // When
-        String actualOutput = problem1.replaceChars(input);
+        String actualOutput = problem1.replaceCharsWithIteration(input);
+        // Then
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void replaceCharsWithRecursionTest() {
+        // Given
+        int startingIndex = 0;
+        String expectedOutput = output;
+        // When
+        String actualOutput = problem1.replaceCharsWithRecursion(input, startingIndex);
         // Then
         Assert.assertEquals(expectedOutput, actualOutput);
     }
