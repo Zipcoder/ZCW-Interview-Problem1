@@ -50,6 +50,14 @@ public class Problem1 {
     public static void main(String[] args) {
         Problem1 problem1 = new Problem1();
 
+        String input = "The Farmer went to the store to get 1 dollar\'s worth of fertilizer";
+        String output = "The 7@rmer went to the $tore to get ! doll@r\'$ worth o7 7ertilizer";
+
+        String test = problem1.replaceCharsWithRecursion(input, 0);
+
+        System.out.println(input);
+        System.out.println(output);
+        System.out.println(test);
     }
 
 
